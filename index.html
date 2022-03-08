@@ -1,11 +1,18 @@
 <html>
   <body>
-    <script type="text/javascript">
-      // Obtain a reference to the platformClient object
-      requirejs(['https://sdk-cdn.mypurecloud.com/javascript/amd/132.0.0/purecloud-platform-client-v2.min.js'], (platformClient) => {
-        console.log(platformClient);
-      });
-    </script>
-    HELLO
+    
+    <form action="">
+      <label for="email">Email Address:</label><br />
+      <input
+        type="text"
+        id="email"
+        name="email"
+        placeholder="sample@address.com"
+      /><br />
+      <input type="submit" value="Submit"/>
+    </form>
+    <h3 id="greeting">Hello,</h3>
+    <h3 id="name"></h3>
+    
   </body>
 </html>

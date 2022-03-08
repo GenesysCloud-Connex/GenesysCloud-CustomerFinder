@@ -19,7 +19,8 @@ client.loginClientCredentialsGrant(CLIENT_ID, CLIENT_SECRET)
 		console.log('Authenticated with Genesys Cloud');
     externalContactsApi.getExternalcontactsReversewhitepageslookup("+14168029268", null)
     .then((data) => {
-      console.log(data)
+      console.log(data.contacts[0].firstName)
+      return data.contacts[0].firstName
     })
 	})
   .catch(() => {
