@@ -15,7 +15,7 @@
       const platformClient = require("platformClient");
       const client = platformClient.ApiClient.instance;
       const externalContactsApi = new platformClient.ExternalContactsApi();
-      const emailAdd = document.getElementById('email').value;
+      // const emailAdd = document.getElementById('email').value;
       let firstName = '';
 
       client.setEnvironment("cac1.pure.cloud");
@@ -29,7 +29,7 @@
           .then((data) => {
             firstName = data.contacts[0].firstName;
             console.log(firstName)
-            console.log(emailAdd)
+            // console.log(emailAdd)
             return firstName;
           })
 				})
