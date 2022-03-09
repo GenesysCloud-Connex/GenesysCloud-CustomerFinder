@@ -16,7 +16,7 @@
       const platformClient = require("platformClient");
       const client = platformClient.ApiClient.instance;
       const externalContactsApi = new platformClient.ExternalContactsApi();
-      // const emailAdd = document.getElementById('email').value;
+      let emailAdd = "";
       let firstName = "";
 
       client.setEnvironment("cac1.pure.cloud");
@@ -26,17 +26,11 @@
         $('form').on('submit', function(e) {
           e.preventDefault();
           let dataString = $(this).serialize();
+          emailAdd = document.getElementById('email').value;
           
-          $.ajax({
-            type: 'POST',
-            url: 'https://genesyscloud-connex.github.io/GenesysCloud_CustomerFinder/',
-            data: dataString,
-            success: function() {
-              console.log("HELLO WORLD!")
-            }
-          })
-          console.log(document.getElementById('email').value)
         })
+        console.log(emailAdd)
+        return emailAdd
       }
       $(document).ready(() => {
         client.loginImplicitGrant(clientId, redirectUri).then(() => {
