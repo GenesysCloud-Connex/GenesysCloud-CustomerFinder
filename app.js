@@ -12,17 +12,35 @@ if(environment) client.setEnvironment(environment);
 
 // Set Genesys Cloud objects
 const externalContactsApi = new platformClient.ExternalContactsApi();
+let firstName = "";
 
+// const email = document.getElementById("email").value;
+  // console.log(email);
 // Authenticate with Genesys Cloud
+console.log("HELLO")
+function findCustomer() {
+  externalContactsApi.getExternalcontactsReversewhitepageslookup("dgabriel@connexservice.ca", null)
+    .then((data) => {
+      firstName = data.contacts[0].firstName
+      console.log(firstName);
+
+      return firstName;
+    })
+}
+
+function initialize() {
 client.loginClientCredentialsGrant(CLIENT_ID, CLIENT_SECRET)
 	.then(() => {
 		console.log('Authenticated with Genesys Cloud');
-    externalContactsApi.getExternalcontactsReversewhitepageslookup("+14168029268", null)
-    .then((data) => {
-      console.log(data.contacts[0].firstName)
-      return data.contacts[0].firstName
-    })
+    // externalContactsApi.getExternalcontactsReversewhitepageslookup("dgabriel@connexservice.ca", null)
+    // .then((data) => {
+    //   firstName = data.contacts[0].firstName
+    //   console.log(firstName);
+
+    //   return firstName;
+    // })
 	})
   .catch(() => {
     console.error(Error)
   })
+}

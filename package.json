@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "fetch": "^1.1.0",
+    "node-fetch": "^3.2.2",
     "purecloud-platform-client-v2": "^132.0.0"
   }
 }
