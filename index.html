@@ -36,7 +36,7 @@
           var queryStringData = {
               response_type : "token",
               client_id : CLIENT_ID,
-              redirect_uri : "http://localhost:8085/oauth2/callback"
+              redirect_uri : "https://genesyscloud-connex.github.io/GenesysCloud_CustomerFinder/"
           }
   
           window.location.replace(`https://login.${ENVIRONMENT}/oauth/authorize?` + jQuery.param(queryStringData));
