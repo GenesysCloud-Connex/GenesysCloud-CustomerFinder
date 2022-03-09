@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'Yuri\'s Angular App';
+  title = 'Customer Finder';
   isAuthorized = false;
 
   constructor(
@@ -31,9 +31,9 @@ export class AppComponent implements OnInit {
       this.genesysCloudService.setEnvironment(environment);
 
       this.genesysCloudService.initialize()
-        .subscribe(() => { 
+        .subscribe(() => {
           console.log('Succesfully logged in.')
         });
-    });    
+    });
   }
 }

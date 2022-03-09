@@ -18,6 +18,7 @@ export class GenesysCloudService {
   private routingApi = new platformClient.RoutingApi();
   private analyticsApi = new platformClient.AnalyticsApi();
   private tokensApi = new platformClient.TokensApi();
+  private externalContactsApi = new platformClient.ExternalContactsApi();
 
   // Authorization values
   language: string = 'en-us';
@@ -32,6 +33,7 @@ export class GenesysCloudService {
   // Persist search values
   lastUserSearchValue = '';
   lastQueueSearchValue = '';
+  lastCustomerSearchValue = '';
 
   constructor() {
     // Try to get saved language and environment information from localstorage
@@ -87,14 +89,18 @@ export class GenesysCloudService {
     }
   }
 
+  getExternalcontactsReversewhitepageslookup(value: string): Observable<platformClient.Models.ReverseWhitepagesLookupResult> {
+    return from(this.externalContactsApi.getExternalcontactsReversewhitepageslookup("dgabriel@connexservice.ca", {}))
+  }
+
   getUserDetails(id: string): Observable<platformClient.Models.User> {
-    return from(this.usersApi.getUser(id, { 
+    return from(this.usersApi.getUser(id, {
         expand: ['routingStatus', 'presence'],
       }));
   }
 
   getUserMe(): Observable<platformClient.Models.UserMe> {
-    return from(this.usersApi.getUsersMe({ 
+    return from(this.usersApi.getUsersMe({
         expand: ['routingStatus', 'presence'],
       }));
   }
@@ -121,7 +127,7 @@ export class GenesysCloudService {
     }))
     .pipe(
       map(data => {
-        const result = data.results?.find(r => r.group?.queueId === queueId); 
+        const result = data.results?.find(r => r.group?.queueId === queueId);
         if(!result) throw new Error(`No results queried for ${queueId}`);
 
         return result;
@@ -131,10 +137,10 @@ export class GenesysCloudService {
 
   setUserPresence(userId: string, presenceId: string): Observable<platformClient.Models.UserPresence> {
     return from(this.presenceApi.patchUserPresencesPurecloud(
-        userId, 
+        userId,
         { presenceDefinition: { id: presenceId } }
       ));
-  } 
+  }
 
   logoutUser(userId: string): Observable<any> {
     return forkJoin({
@@ -186,6 +192,10 @@ export class GenesysCloudService {
 
     return from(this.usersApi.postUsersSearch(searchBody))
       .pipe(map(data => data.results || []));
+  }
+
+  searchCustomers(id: string): Observable<platformClient.Models.ExternalContact>{
+    return from(this.externalContactsApi.getExternalcontactsContact(id, {}))
   }
 
   searchQueues(term: string): Observable<platformClient.Models.Queue[]> {
