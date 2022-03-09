@@ -1,12 +1,17 @@
 <html>
   <head>
     <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="https://sdk-cdn.mypurecloud.com/javascript/latest/purecloud-platform-client-v2.min.js"></script>
     <script>
       // Implicit grant credentials
       const CLIENT_ID = "4eb23f0e-0a17-48dc-ac88-13a44cc82134";
 
       // Genesys Cloud environment
       const ENVIRONMENT = "cac1.pure.cloud";
+
+      // Set Genesys Cloud objects
+      const platformClient = require("platformClient");
+      const client = platformClient.ApiClient.instance;
 
       function getParameterByName(name) {
         name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
