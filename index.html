@@ -25,13 +25,18 @@
         client.loginImplicitGrant(clientId, redirectUri)
 				.then(() => {
 					console.log('Logged in');
-          externalContactsApi.getExternalcontactsReversewhitepageslookup("dgabriel@connexservice.ca", {})
+          if (document.getElementById('email').value) {
+            externalContactsApi.getExternalcontactsReversewhitepageslookup("dgabriel@connexservice.ca", {})
           .then((data) => {
             firstName = data.contacts[0].firstName;
             console.log(firstName)
             // console.log(emailAdd)
             return firstName;
+            
           })
+          }
+          
+          
 				})
       })
     </script>
