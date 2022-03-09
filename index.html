@@ -22,13 +22,13 @@
       client.setEnvironment("cac1.pure.cloud");
       client.setPersistSettings(true, "test_app");
 
-      function submitBtn() {
-        $('form').on('submit', function(e) {
-          e.preventDefault();
-          // let dataString = $(this).serialize();
-          console.log(document.getElementById('email').value)
-        })
-      }
+      // function submitBtn() {
+      //   $('form').on('submit', function(e) {
+      //     e.preventDefault();
+      //     // let dataString = $(this).serialize();
+      //     console.log(document.getElementById('email').value)
+      //   })
+      // }
       $(document).ready(() => {
         client.loginImplicitGrant(clientId, redirectUri).then(() => {
           console.log("Logged in");
@@ -60,7 +60,7 @@
           placeholder="sample@address.com"
         /><br />
         <!-- <button type="submit">Submit</button> -->
-        <input type="submit" name="submit" value="Submit" onclick="submitBtn()" id="btn" />
+        <input type="submit" name="submit" value="Submit" onclick="" id="btn" />
       </form>
     </div>
     <h3 id="greeting">Hello,</h3>
