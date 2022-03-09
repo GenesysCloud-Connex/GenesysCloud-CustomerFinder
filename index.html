@@ -29,6 +29,9 @@
           },
           success: function (data) {
             console.log(data);
+            $("#btn").click(function () {
+              console.log("HEYYYY");
+            });
           },
         });
 
@@ -54,10 +57,6 @@
         //   document.getElementById('name').innerHTML = firstName;
         // }
       }
-
-      $("#btn").click(function () {
-        console.log("HEYYYY")
-      });
     </script>
   </head>
   <body>
