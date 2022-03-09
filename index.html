@@ -39,31 +39,12 @@
               .then((data) => {
                 firstName = data.contacts[0].firstName;
                 console.log(firstName);
-                // console.log(emailAdd)
-                return firstName;
+                return $('#greeting').html(`<h3>Hello, ${firstName}!</h3>`)
               });
           });
-          return;
         });
-        console.log(emailAdd);
-        return emailAdd;
+        return;
       }
-      $(document).ready(() => {
-        client.loginImplicitGrant(clientId, redirectUri).then(() => {
-          console.log("Logged in");
-          externalContactsApi
-            .getExternalcontactsReversewhitepageslookup(
-              "dgabriel@connexservice.ca",
-              {}
-            )
-            .then((data) => {
-              firstName = data.contacts[0].firstName;
-              console.log(firstName);
-              // console.log(emailAdd)
-              return firstName;
-            });
-        });
-      });
     </script>
   </head>
   <body>
@@ -86,7 +67,6 @@
         />
       </form>
     </div>
-    <h3 id="greeting">Hello,</h3>
-    <h3 id="name"></h3>
+    <h3 id="greeting"></h3>
   </body>
 </html>
