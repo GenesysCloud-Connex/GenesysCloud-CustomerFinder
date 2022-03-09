@@ -26,9 +26,9 @@
 					console.log('Logged in');
           externalContactsApi.getExternalcontactsReversewhitepageslookup("dgabriel@connexservice.ca", {})
           .then((data) => {
-            console.log(data)
+            firstName = data.contacts[0].firstName;
+            return firstName;
           })
-					return
 				})
       })
 
