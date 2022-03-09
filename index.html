@@ -14,9 +14,10 @@
       // Set Genesys Cloud objects
       const platformClient = require("platformClient");
       const client = platformClient.ApiClient.instance;
-
       const externalContactsApi = new platformClient.ExternalContactsApi();
+      const emailAdd = document.getElementById('email').value;
       let firstName = '';
+
       client.setEnvironment("cac1.pure.cloud");
       client.setPersistSettings(true, "test_app");
 
@@ -27,6 +28,7 @@
           externalContactsApi.getExternalcontactsReversewhitepageslookup("dgabriel@connexservice.ca", {})
           .then((data) => {
             firstName = data.contacts[0].firstName;
+            console.log(firstName)
             return firstName;
           })
 				})
