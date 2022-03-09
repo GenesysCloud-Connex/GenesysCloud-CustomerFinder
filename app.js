@@ -17,8 +17,8 @@ let firstName = "";
 // const email = document.getElementById("email").value;
   // console.log(email);
 // Authenticate with Genesys Cloud
-console.log("HELLO")
 function findCustomer() {
+  console.log("HELLO")
   externalContactsApi.getExternalcontactsReversewhitepageslookup("dgabriel@connexservice.ca", null)
     .then((data) => {
       firstName = data.contacts[0].firstName
@@ -28,10 +28,10 @@ function findCustomer() {
     })
 }
 
-function initialize() {
-client.loginClientCredentialsGrant(CLIENT_ID, CLIENT_SECRET)
-	.then(() => {
-		console.log('Authenticated with Genesys Cloud');
+// function initialize() {
+// client.loginClientCredentialsGrant(CLIENT_ID, CLIENT_SECRET)
+// 	.then(() => {
+// 		console.log('Authenticated with Genesys Cloud');
     // externalContactsApi.getExternalcontactsReversewhitepageslookup("dgabriel@connexservice.ca", null)
     // .then((data) => {
     //   firstName = data.contacts[0].firstName
@@ -39,8 +39,8 @@ client.loginClientCredentialsGrant(CLIENT_ID, CLIENT_SECRET)
 
     //   return firstName;
     // })
-	})
-  .catch(() => {
-    console.error(Error)
-  })
-}
+	// })
+  // .catch(() => {
+  //   console.error(Error)
+  // })
+// }
