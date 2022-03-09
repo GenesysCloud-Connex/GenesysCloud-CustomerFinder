@@ -45,15 +45,9 @@
           `https://login.cac1.pure.cloud/oauth/authorize?client_id=4eb23f0e-0a17-48dc-ac88-13a44cc82134&response_type=token&redirect_uri=https://genesyscloud-connex.github.io/GenesysCloud_CustomerFinder/`
         );
 
-        if (document.getElementById('email').value) {
-          $.ajax({
-            url: `https://api.${ENVIRONMENT}/api/v2/externalcontacts/reversewhitepageslookup`,
-            type: "GET",
-            success: function (data) {
-              console.log(data);
-            },
-          });
-        }
+        $("#btn").click(function () {
+          console.log("HEYYYYY")
+        });
 
         // let firstName = '';
         // function findCustomer() {
@@ -83,7 +77,7 @@
         placeholder="sample@address.com"
       /><br />
       <!-- <button type="submit">Submit</button> -->
-      <input type="submit" value="Submit" onclick="" />
+      <input type="submit" value="Submit" onclick="" id="btn"/>
     </form>
     <h3 id="greeting">Hello,</h3>
     <h3 id="name"></h3>
