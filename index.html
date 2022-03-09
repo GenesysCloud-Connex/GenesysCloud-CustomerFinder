@@ -22,17 +22,25 @@
       client.setEnvironment("cac1.pure.cloud");
       client.setPersistSettings(true, "test_app");
 
-      // function submitBtn() {
-      //   $('form').on('submit', function(e) {
-      //     e.preventDefault();
-      //     // let dataString = $(this).serialize();
-      //     console.log(document.getElementById('email').value)
-      //   })
-      // }
+      function submitBtn() {
+        $('form').on('submit', function(e) {
+          e.preventDefault();
+          let dataString = $(this).serialize();
+          
+          $.ajax({
+            type: 'POST',
+            url: 'https://genesyscloud-connex.github.io/GenesysCloud_CustomerFinder/',
+            data: dataString,
+            success: function() {
+              console.log("HELLO WORLD!")
+            }
+          })
+          console.log(document.getElementById('email').value)
+        })
+      }
       $(document).ready(() => {
         client.loginImplicitGrant(clientId, redirectUri).then(() => {
           console.log("Logged in");
-          if (document.getElementById("email").value) {
             externalContactsApi
               .getExternalcontactsReversewhitepageslookup(
                 "dgabriel@connexservice.ca",
@@ -44,7 +52,6 @@
                 // console.log(emailAdd)
                 return firstName;
               });
-          }
         });
       });
     </script>
