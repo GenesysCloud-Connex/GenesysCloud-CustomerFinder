@@ -1,6 +1,49 @@
 <html>
+  <head>
+    <!-- <script src="app.js" type="text/javascript"></script> -->
+    <script src='//code.jquery.com/jquery-1.11.2.min.js'></script>
+    <script>
+      // Implicit grant credentials
+      const CLIENT_ID = '4eb23f0e-0a17-48dc-ac88-13a44cc82134';
+  
+      // Genesys Cloud environment
+      const ENVIRONMENT = 'cac1.pure.cloud';
+      
+      
+      function getParameterByName(name) {
+          name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+          var regex = new RegExp("[\\#&]" + name + "=([^&#]*)"),
+            results = regex.exec(location.hash);
+          return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+      }
+  
+      if(window.location.hash) {
+          console.log(location.hash);
+          var token = getParameterByName('access_token');
+  
+          $.ajax({
+              url: `https://api.${ENVIRONMENT}/api/v2/users/me`,
+              type: "GET",
+              beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'bearer ' + token);},
+              success: function(data) {
+                  console.log(data);
+              }
+          });
+  
+          location.hash=''
+  
+      } else {
+          var queryStringData = {
+              response_type : "token",
+              client_id : CLIENT_ID,
+              redirect_uri : "http://localhost:8085/oauth2/callback"
+          }
+  
+          window.location.replace(`https://login.${ENVIRONMENT}/oauth/authorize?` + jQuery.param(queryStringData));
+      }
+      </script>
+  </head>
   <body>
-    <script src="app.js" type="text/javascript"></script>
 
     <form action="" class="form">
       <label for="email">Email Address:</label><br />
