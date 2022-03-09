@@ -22,6 +22,13 @@
       client.setEnvironment("cac1.pure.cloud");
       client.setPersistSettings(true, "test_app");
 
+      function submitBtn() {
+        $('form').on('submit', function(e) {
+          e.preventDefault();
+          let dataString = $(this).serialize();
+          console.log(dataString)
+        })
+      }
       $(document).ready(() => {
         client.loginImplicitGrant(clientId, redirectUri).then(() => {
           console.log("Logged in");
@@ -40,11 +47,6 @@
           }
         });
       });
-      function submitBtn() {
-        $('form').on('submit', function(e) {
-          e.preventDefault();
-        })
-      }
     </script>
   </head>
   <body>
