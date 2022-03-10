@@ -25,6 +25,18 @@
         }
       );
     </script>
+    <script type="text/javascript" charset="utf-8">
+      Genesys("subscribe", "Launcher.ready" , function(o){
+        console.log("The queue works!");
+      });
+        Genesys("command", "Database.set", {
+      messaging: {
+        customAttributes: {
+          EmailAddress : "vtieu@connexcare.com"
+        }
+      }
+    });
+    </script>
     <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
     <script src="https://sdk-cdn.mypurecloud.com/javascript/latest/purecloud-platform-client-v2.min.js"></script>
     <script>
@@ -67,16 +79,6 @@
         console.log(emailAdd)
         return firstName, emailAdd;
       }
-      Genesys("subscribe", "Launcher.ready", function (o) {
-          console.log("The queue works!");
-        });
-        Genesys("command", "Database.set", {
-          messaging: {
-            customAttributes: {
-              EmailAddress: emailAdd,
-            },
-          },
-        });
     </script>
   </head>
   <body>
