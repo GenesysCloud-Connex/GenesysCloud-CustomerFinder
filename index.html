@@ -1,4 +1,4 @@
-<html>
+<!-- <html>
   <head>
     <script type="text/javascript" charset="utf-8">
       (function (g, e, n, es, ys) {
@@ -39,7 +39,7 @@
     </script>
     <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
     <script src="https://sdk-cdn.mypurecloud.com/javascript/latest/purecloud-platform-client-v2.min.js"></script>
-    <!-- <script>
+    <script>
       // Implicit grant credentials
       const clientId = "4eb23f0e-0a17-48dc-ac88-13a44cc82134";
       const redirectUri =
@@ -80,7 +80,7 @@
         return firstName, emailAdd;
       }
     </script>
-  </head> -->
+  </head>
   <body>
     <div id="contact-form">
       <form action="" class="form">
@@ -102,4 +102,40 @@
     </div>
     <div id="greeting"></div>
   </body>
-</html>
+</html> -->
+
+
+<html>
+<head>
+</head>
+<body>
+</body>
+<script type="text/javascript" charset="utf-8">
+    (function (g, e, n, es, ys) {
+      g['_genesysJs'] = e;
+      g[e] = g[e] || function () {
+        (g[e].q = g[e].q || []).push(arguments)
+      };
+      g[e].t = 1 * new Date();
+      g[e].c = es;
+      ys = document.createElement('script'); ys.async = 1; ys.src = n; ys.charset = 'utf-8'; document.head.appendChild(ys);
+    })(window, 'Genesys', 'https://apps.cac1.pure.cloud/genesys-bootstrap/genesys.min.js', {
+      environment: 'cac1',
+      deploymentId: 'd9b7830b-5826-4829-9b0d-075e858c8801'
+    });
+  </script>
+  
+  <script type="text/javascript" charset="utf-8">
+  Genesys("subscribe", "Launcher.ready" , function(o){
+    console.log("The queue works!");
+  });
+    Genesys("command", "Database.set", {
+  messaging: {
+    customAttributes: {
+      EmailAddress : "vtieu@connexcare.com"
+    }
+  }
+});
+</script>
+  testxxxxxxbf
+  </html>
