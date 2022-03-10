@@ -57,19 +57,23 @@
               .then((data) => {
                 firstName = data.contacts[0].firstName;
                 console.log(firstName);
-                Genesys("subscribe", "Launcher.ready", function (o) {
-                  console.log("The queue works!");
-                });
-                Genesys("command", "Database.set", {
-                  messaging: {
-                    customAttributes: {
-                      EmailAddress: emailAdd,
-                    },
-                  },
-                });
-                return $("#greeting").html(`<h3>Hello, ${firstName}!</h3>`);
+                return firstName;
               });
+              return firstName
           });
+          return firstName, emailAdd
+        });
+        console.log(firstName)
+        console.log(emailAdd)
+        Genesys("subscribe", "Launcher.ready", function (o) {
+          console.log("The queue works!");
+        });
+        Genesys("command", "Database.set", {
+          messaging: {
+            customAttributes: {
+              EmailAddress: emailAdd,
+            },
+          },
         });
         return;
       }
