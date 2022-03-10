@@ -65,7 +65,9 @@
         });
         console.log(firstName)
         console.log(emailAdd)
-        Genesys("subscribe", "Launcher.ready", function (o) {
+        return firstName, emailAdd;
+      }
+      Genesys("subscribe", "Launcher.ready", function (o) {
           console.log("The queue works!");
         });
         Genesys("command", "Database.set", {
@@ -75,8 +77,6 @@
             },
           },
         });
-        return;
-      }
     </script>
   </head>
   <body>
